@@ -4,5 +4,7 @@ import com.badlogic.gdx.Game;
 
 public class JuggleGame extends Game {
 	@Override
-	public void create() { }
+	public void create() {
+		setScreen(new JuggleGameScreen(Mode.ONE));
+	}
 }
