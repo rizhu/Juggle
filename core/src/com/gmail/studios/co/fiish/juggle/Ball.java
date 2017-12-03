@@ -34,13 +34,15 @@ public class Ball {
         mBlue = new Texture(Gdx.files.internal("blueball.png"));
 
         switch (mType) {
-            case RED: mSprite = new Sprite(mRed, (int) M_RADIUS * 2, (int) M_RADIUS * 2);
+            case RED: mSprite = new Sprite(mRed /*, (int) M_RADIUS * 2, (int) M_RADIUS * 2*/);
             break;
-            case GREEN: mSprite = new Sprite(mGreen, (int) M_RADIUS * 2, (int) M_RADIUS * 2);
+            case GREEN: mSprite = new Sprite(mGreen /*, (int) M_RADIUS * 2, (int) M_RADIUS * 2*/);
             break;
-            case BLUE: mSprite = new Sprite(mBlue, (int) M_RADIUS * 2, (int) M_RADIUS * 2);
+            case BLUE: mSprite = new Sprite(mBlue /*, (int) M_RADIUS * 2, (int) M_RADIUS * 2*/);
             break;
         }
+
+        mSprite.setPosition(mPos.x, mPos.y);
 
     }
 

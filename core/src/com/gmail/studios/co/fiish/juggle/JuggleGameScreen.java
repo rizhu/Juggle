@@ -66,4 +66,10 @@ public class JuggleGameScreen extends ScreenAdapter {
         }
     }
 
+    @Override
+    public void resize(int width, int height) {
+        mViewport.update(width, height, true);
+    }
+
+
 }
