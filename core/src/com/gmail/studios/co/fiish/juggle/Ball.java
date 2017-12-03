@@ -26,7 +26,7 @@ public class Ball {
     }
 
     public void init() {
-        mPos = new Vector2(mViewport.getWorldWidth() / 2, mViewport.getWorldHeight() / 2);
+        mPos = new Vector2(mViewport.getScreenWidth() / 2, mViewport.getScreenHeight() / 2);
         mVelocity = new Vector2();
 
         mRed = new Texture(Gdx.files.internal("redball.png"));
