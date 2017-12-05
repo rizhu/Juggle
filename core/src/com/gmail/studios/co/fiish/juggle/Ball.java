@@ -4,7 +4,6 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 enum Type {RED, GREEN, BLUE}
@@ -22,7 +21,6 @@ public class Ball {
     public Ball(Type type, Viewport viewport) {
         this.mType = type;
         this.mViewport = viewport;
-        init();
     }
 
     public void init() {
@@ -42,12 +40,7 @@ public class Ball {
             break;
         }
 
-        mSprite.setPosition(mPos.x, mPos.y);
-
-    }
-
-    public void render(SpriteBatch batch) {
-        mSprite.draw(batch);
+        mSprite.setPosition(mPos.x - mSprite.getWidth() / 2, mPos.y - mSprite.getHeight() / 2);
     }
 
     public void dispose() {

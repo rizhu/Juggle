@@ -3,6 +3,7 @@ package com.gmail.studios.co.fiish.juggle;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -69,6 +70,9 @@ public class JuggleGameScreen extends ScreenAdapter {
     @Override
     public void resize(int width, int height) {
         mViewport.update(width, height, true);
+        for (int i = 0; i < mBalls.size; i++) {
+            mBalls.get(i).init();
+        }
     }
 
 
