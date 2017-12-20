@@ -1,9 +1,10 @@
 package com.gmail.studios.co.fiish.juggle;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.input.GestureDetector;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -16,6 +17,9 @@ public class JuggleGameScreen extends ScreenAdapter {
 
     public Array<Ball> mBalls;
     public Viewport mViewport;
+
+    public JuggleGameInputHandler mInputHandler;
+    public BallHandler mBallHandler;
 
     SpriteBatch mBatch;
 
@@ -44,6 +48,9 @@ public class JuggleGameScreen extends ScreenAdapter {
                 mBalls.add(new Ball(Type.BLUE, mViewport));
                 break;
         }
+
+        mInputHandler = new JuggleGameInputHandler(mMode, mBalls);
+        Gdx.input.setInputProcessor(new GestureDetector(mInputHandler));
     }
 
     @Override
@@ -55,7 +62,9 @@ public class JuggleGameScreen extends ScreenAdapter {
 
         mBatch.begin();
         for (int i = 0; i < mBalls.size; i++) {
-            mBalls.get(i).mSprite.draw(mBatch);
+            mBalls.get(i).update(delta);
+            mBallHandler.collisionCheck();
+            mBalls.get(i).draw(mBatch);
         }
         mBatch.end();
     }
@@ -73,6 +82,8 @@ public class JuggleGameScreen extends ScreenAdapter {
         for (int i = 0; i < mBalls.size; i++) {
             mBalls.get(i).init();
         }
+
+        mBallHandler = new BallHandler(mViewport, mBalls);
     }
 
 
