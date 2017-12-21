@@ -58,7 +58,7 @@ public class Ball {
         mVelocity.x -= delta * mFriction * mVelocity.x;
         mVelocity.y -= delta * mFriction * mVelocity.y;
 
-        //mVelocity = mVelocity.clamp(0, 50);
+        //mVelocity = mVelocity.clamp(0, 500);
 
         mPos.x += mVelocity.x * delta;
         mPos.y += mVelocity.y * delta;

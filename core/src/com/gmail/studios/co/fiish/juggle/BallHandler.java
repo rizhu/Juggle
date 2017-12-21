@@ -1,4 +1,5 @@
 package com.gmail.studios.co.fiish.juggle;
+
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
@@ -13,8 +14,8 @@ public class BallHandler {
 
     public void collisionCheck() {
         if (mBalls.size > 1) {
-            for (int i = 0; i < 2; i++) {
-                for (int j = 1; j < mBalls.size; j++) {
+            for (int i = 0; i < mBalls.size / 2; i++) {
+                for (int j = mBalls.size / 2; j < mBalls.size; j++) {
                     if (mBalls.get(i).mPos.dst(mBalls.get(j).mPos) < 2 * mBalls.get(i).mRadius) {
                         mBalls.get(j).mVelocity.x = mBalls.get(i).mVelocity.x;
                         mBalls.get(j).mVelocity.y = mBalls.get(i).mVelocity.y;

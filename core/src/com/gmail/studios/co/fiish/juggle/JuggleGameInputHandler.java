@@ -2,6 +2,7 @@ package com.gmail.studios.co.fiish.juggle;
 
 import com.badlogic.gdx.input.GestureDetector;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.viewport.Viewport;
 
 public class JuggleGameInputHandler extends GestureDetector.GestureAdapter {
     public Mode mMode;
@@ -9,15 +10,18 @@ public class JuggleGameInputHandler extends GestureDetector.GestureAdapter {
     public Array<Ball> mBalls;
     public Array<Touch> mTouches;
 
-    public JuggleGameInputHandler(Mode mode, Array<Ball> balls) {
+    public Viewport mViewport;
+
+    public JuggleGameInputHandler(Mode mode, Array<Ball> balls, Viewport viewport) {
         this.mMode = mode;
         this.mBalls = balls;
+        this.mViewport = viewport;
         mTouches = new Array<Touch>();
     }
 
     @Override
     public boolean touchDown(float x, float y, int pointer, int button) {
-        mTouches.add(new Touch(x, y));
+        mTouches.add(new Touch(x, y, mViewport));
         return true;
     }
 
@@ -27,7 +31,7 @@ public class JuggleGameInputHandler extends GestureDetector.GestureAdapter {
             for (Ball ball : mBalls) {
                 if (mTouches.get(i).isInside(ball)) {
                     ball.mVelocity.x += velocityX;
-                    ball.mVelocity.y += velocityY;
+                    ball.mVelocity.y -= velocityY;
                     mTouches.removeIndex(i);
                     return true;
                 }
