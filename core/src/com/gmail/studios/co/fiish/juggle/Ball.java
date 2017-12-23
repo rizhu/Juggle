@@ -18,7 +18,8 @@ public class Ball {
     public Viewport mViewport;
 
     public float mRadius;
-    public final float mFriction = 1.0f;
+    public final float mDrag = 1.0f;
+    public final float mGravity = -2000.0f;
 
     public Ball(Type type, Viewport viewport) {
         this.mType = type;
@@ -55,10 +56,18 @@ public class Ball {
     }
 
     public void update(float delta) {
-        mVelocity.x -= delta * mFriction * mVelocity.x;
-        mVelocity.y -= delta * mFriction * mVelocity.y;
+        mVelocity.x -= delta * mDrag * mVelocity.x;
+        if (mPos.y - mRadius > 0) {
+            mVelocity.y = mVelocity.y + mGravity * delta;
+        }
 
-        //mVelocity = mVelocity.clamp(0, 500);
+        if (mVelocity.y > 0 && mVelocity.len() > 2000) {
+            mVelocity = mVelocity.clamp(0, 2000);
+        } else {
+            mVelocity = mVelocity.clamp(0, 6000);
+        }
+
+        //Gdx.app.log("Velocity", "" + mVelocity.len());
 
         mPos.x += mVelocity.x * delta;
         mPos.y += mVelocity.y * delta;

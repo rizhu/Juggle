@@ -5,7 +5,12 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 
 public class Touch {
     public Vector2 mTouchPos;
+    public Vector2 mTouchDist;
+
     public Viewport mViewport;
+    public Ball mBall;
+    public long mStart;
+    public float mElapsedTime;
 
     public Touch(float x, float y, Viewport viewport) {
         this.mTouchPos = new Vector2(x, y);
@@ -18,5 +23,4 @@ public class Touch {
         }
         return false;
     }
-
 }

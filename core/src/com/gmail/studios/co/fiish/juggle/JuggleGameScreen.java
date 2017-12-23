@@ -50,7 +50,7 @@ public class JuggleGameScreen extends ScreenAdapter {
         }
 
         mInputHandler = new JuggleGameInputHandler(mMode, mBalls, mViewport);
-        Gdx.input.setInputProcessor(new GestureDetector(mInputHandler));
+        Gdx.input.setInputProcessor(mInputHandler);
     }
 
     @Override
