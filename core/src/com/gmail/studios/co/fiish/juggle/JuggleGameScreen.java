@@ -31,7 +31,7 @@ public class JuggleGameScreen extends ScreenAdapter {
     public void show() {
         mViewport = new ExtendViewport(500.0f, 500.0f);
         mBatch = new SpriteBatch();
-        switch (mMode) {
+        /* switch (mMode) {
             case ONE:
                 mBalls = new Array<Ball>(1);
                 mBalls.add(new Ball(Type.RED, mViewport));
@@ -41,13 +41,13 @@ public class JuggleGameScreen extends ScreenAdapter {
                 mBalls.add(new Ball(Type.RED, mViewport));
                 mBalls.add(new Ball(Type.GREEN, mViewport));
                 break;
-            case THREE:
+            case THREE: */
                 mBalls = new Array<Ball>(3);
                 mBalls.add(new Ball(Type.RED, mViewport));
                 mBalls.add(new Ball(Type.GREEN, mViewport));
                 mBalls.add(new Ball(Type.BLUE, mViewport));
-                break;
-        }
+                //break;
+        //}
 
         mInputHandler = new JuggleGameInputHandler(mMode, mBalls, mViewport);
         Gdx.input.setInputProcessor(mInputHandler);

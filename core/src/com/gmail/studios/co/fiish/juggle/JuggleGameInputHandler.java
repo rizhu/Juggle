@@ -47,8 +47,8 @@ public class JuggleGameInputHandler extends InputAdapter {
             touch.mElapsedTime = ((float) (TimeUtils.millis() - touch.mStart)) / 1000;
             if (touch.mElapsedTime < 0.15) {
                 touch.mTouchDist = new Vector2(screenX - touch.mTouchPos.x, screenY - touch.mTouchPos.y);
-                float velocityX = touch.mTouchDist.x / touch.mElapsedTime * 0.4f;
-                float velocityY = touch.mTouchDist.y / touch.mElapsedTime * 0.4f;
+                float velocityX = touch.mTouchDist.x / touch.mElapsedTime;
+                float velocityY = touch.mTouchDist.y / touch.mElapsedTime;
                 //Vector2 velocity = new Vector2(velocityX, velocityY);
                 //Gdx.app.log("Velocity", "" + velocity.len());
                 touch.mBall.mVelocity.x += velocityX;

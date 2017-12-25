@@ -14,19 +14,22 @@ public class BallHandler {
 
     public void collisionCheck() {
         if (mBalls.size > 1) {
-            for (int i = 0; i < mBalls.size / 2; i++) {
+            for (int i = 0; i <= mBalls.size / 2; i++) {
                 for (int j = mBalls.size / 2; j < mBalls.size; j++) {
+                    if (mBalls.get(i).equals(mBalls.get(j))) {
+                        continue;
+                    }
                     if (mBalls.get(i).mPos.dst(mBalls.get(j).mPos) < 2 * mBalls.get(i).mRadius) {
                         if (mBalls.get(i).mVelocity.len() > mBalls.get(j).mVelocity.len()) {
                             mBalls.get(j).mVelocity.x += mBalls.get(i).mVelocity.x / (2.0f / (float) Math.sqrt(2));
-                            mBalls.get(i).mVelocity.x = mBalls.get(i).mVelocity.x / (2.0f / (float) Math.sqrt(2));
+                            mBalls.get(i).mVelocity.x /= 0 - (2.0f / (float) Math.sqrt(2));
                             mBalls.get(j).mVelocity.y += mBalls.get(i).mVelocity.y / (2.0f / (float) Math.sqrt(2));
-                            mBalls.get(i).mVelocity.y = mBalls.get(i).mVelocity.y / (2.0f / (float) Math.sqrt(2));
+                            mBalls.get(i).mVelocity.y /= 0 - (2.0f / (float) Math.sqrt(2));
                         } else {
                             mBalls.get(i).mVelocity.x += mBalls.get(j).mVelocity.x / (2.0f / (float) Math.sqrt(2));
-                            mBalls.get(j).mVelocity.x = mBalls.get(j).mVelocity.x / (2.0f / (float) Math.sqrt(2));
+                            mBalls.get(j).mVelocity.x /= 0 - (2.0f / (float) Math.sqrt(2));
                             mBalls.get(i).mVelocity.y += mBalls.get(j).mVelocity.y / (2.0f / (float) Math.sqrt(2));
-                            mBalls.get(j).mVelocity.y = mBalls.get(j).mVelocity.y / (2.0f / (float) Math.sqrt(2));
+                            mBalls.get(j).mVelocity.y /= 0 - (2.0f / (float) Math.sqrt(2));
                         }
                     }
                 }

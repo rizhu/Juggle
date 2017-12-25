@@ -21,6 +21,22 @@ public class Ball {
     public final float mDrag = 1.0f;
     public final float mGravity = -2000.0f;
 
+    public boolean equals(Ball ball) {
+        if (ball == null) {
+            return false;
+        }
+        if (ball.getClass() != this.getClass()) {
+            return false;
+        }
+        if (!(this.mType == ball.mType)) {
+            return false;
+        }
+        if (!(this.mRadius == ball.mRadius)) {
+            return false;
+        }
+        return true;
+    }
+
     public Ball(Type type, Viewport viewport) {
         this.mType = type;
         this.mViewport = viewport;
